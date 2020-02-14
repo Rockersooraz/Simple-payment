@@ -1,0 +1,37 @@
+  <br>
+    <a class="btn btn-info" routerLink="/create-payment">Make Payment</a>
+    <br>
+    <br>
+  <div>
+      <h3 class="mb-3 text-center">Payment Lists</h3>
+  <br>
+      <div class="col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col"> Id</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Currency Code</th>
+              <th scope="col">Destination Acc-No</th>
+              <!-- <th scope="col">Description</th> -->
+              <th scope="col">Source Acc-No.</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let pay of payment">
+              <td>{{pay.id}}</td>
+              <td>{{pay.amount}}</td>
+              <td>{{pay.currencyCode}}</td>
+              <td>{{pay.destinationAccountNumber}}</td>
+              <!-- <td>{{pay.paymentDescription}}</td> -->
+              <td>{{pay.sourceAccountNumber}}</td>
+              <td id="detail" (click)="onSelect(pay)" class="btn btn-info" style="cursor: pointer;"> Details</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+

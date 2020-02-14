@@ -1,0 +1,63 @@
+
+  <div class="panel panel-default ">
+    <div class="panel-heading">  <h4 >Payment Detail</h4></div>
+    <div class="panel-body">
+      
+      <div class="box box-info">
+        
+        <div class="box-body">
+          <div class="col-sm-6">
+            <div align="center"> 
+              <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+              <input id="profile-image-upload" class="hidden" type="file">     
+            </div>
+            
+            <br>
+            
+            <!-- /input-group -->
+          </div>
+          <div class="col-sm-6 ">
+            <h4 style="color:#00b1b1;">{{payDetail.amount}} {{payDetail.currencyCode}} </h4>
+            <span><p> &nbsp;{{payDetail.sourceAccountNumber}}</p></span>            
+          </div>
+          <div class="clearfix"></div>
+          <hr style="margin:5px 0 5px 0;">
+          
+          
+          <div class="col-sm-5 col-xs-6 tital " >Your Account Number:</div><div class="col-sm-7 col-xs-6 ">{{payDetail.sourceAccountNumber}}</div>
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          
+          
+          <div class="col-sm-5 col-xs-6 tital " >Receiver Account number:</div><div class="col-sm-7">{{payDetail.destinationAccountNumber}}</div>
+          
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          
+          <div class="col-sm-5 col-xs-6 tital " >Amound Sent:</div><div class="col-sm-7">{{payDetail.amount}}</div>
+          
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          
+          <div class="col-sm-5 col-xs-6 tital " >currency Code:</div><div class="col-sm-7">{{payDetail.currencyCode}}</div>
+          
+          <div class="clearfix"></div>
+          <div class="bot-border"></div>
+          
+          <div class="col-sm-5 col-xs-6 tital " >Payment Description:</div><div class="col-sm-7">{{payDetail.paymentDescription}}</div>
+          
+          
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+        
+      </div>         
+      
+    </div> 
+  </div>
+
+
+
+
+
+

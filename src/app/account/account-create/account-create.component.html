@@ -1,0 +1,63 @@
+  <br>
+  <div class="btn float-right">
+    <button type="button" class="btn btn-danger rounded-pill" routerLink="/account-list">View <br> Account List</button>
+  </div>
+
+  <br>
+  <div class="post-form">
+      <h2>Add Account</h2>
+    
+      <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+        
+        <div class="form-group" [class.text-danger]="fullNameControl.invalid && fullNameControl.touched">
+          <label for="description">Full Name: </label>
+          <input type="text" name="accountHolderName" id="accountHolderName" [(ngModel)]="acc.accountHolderName" 
+          required #fullNameControl="ngModel">
+          <span *ngIf="fullNameControl.invalid && fullNameControl.touched">
+            Full Name is required
+          </span>
+        </div>
+    
+        <div class="form-group" [class.text-danger]="phoneControl.invalid && phoneControl.touched">
+          <label for="Phone">Phone: </label>
+          <input type="text" maxlength="15"  pattern="^\+?[0-9]{3}-?[0-9]{10}$" name="accountHolderPhoneNumber" id="accountHolderPhoneNumber" 
+          [(ngModel)]="acc.accountHolderPhoneNumber" required  #phoneControl="ngModel">
+          <span *ngIf="phoneControl.invalid && phoneControl.touched">
+            Phone is required
+          </span>
+          <span *ngIf="phoneControl.touched && phoneControl.errors?.pattern">
+          Please Enter valid 10 digit number with country code
+          </span>
+        </div>
+
+        <div class="form-group"  [class.text-danger]="accountControl.invalid && accountControl.touched">
+          <label for="accountNumber"> Account Number: </label>
+          <input type="text" name="accountNumber" id="accountNumber" pattern="[0-9]{6}" maxlength="6" [(ngModel)]="acc.accountNumber" required #accountControl="ngModel">
+          <span *ngIf="accountControl.invalid && accountControl.touched">
+            AccNo Required.
+          </span>
+          <span *ngIf="accountControl.touched && accountControl.errors?.pattern">
+            Not available.Please Enter 6 digit number
+          </span>
+        </div>
+    
+        
+        <div class="form-group"  [class.text-danger]="descControl.invalid && descControl.touched">
+          <label for="description">Account Description: </label>
+          <textarea name="accountDescription" id="accountDescription" [(ngModel)]="acc.accountDescription"  rows="8" required #descControl="ngModel"></textarea>
+        <span *ngIf="descControl.invalid && descControl.touched">
+            Description is required
+          </span>
+        </div>
+        
+        <div class="form-group"> <label>&nbsp;</label>
+          <button type="submit" [disabled]="!postForm.form.valid">Create Accountt</button>
+        </div>
+      </form>
+    </div>
+    
+
+    
+
+
+

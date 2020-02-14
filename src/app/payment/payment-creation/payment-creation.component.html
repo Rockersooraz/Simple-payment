@@ -1,0 +1,72 @@
+    <br>
+    <div class="btn float-right">
+      <button type="button" class="btn btn-danger rounded-pill" routerLink="/payment-list">View <br> Payment List</button>
+    </div>
+
+    <br>
+    <div class="post-form">
+        <h2>Add Payment</h2>
+      
+        <form (ngSubmit)="onSubmit()" #paymentForm="ngForm">
+          
+          <div class="form-group" [class.text-danger]="amountControl.invalid && amountControl.touched">
+            <label for="description">Amount: </label>
+            <input type="amount" name="amount" id="amount" [(ngModel)]="amount.amount" required #amountControl="ngModel">
+            <span *ngIf="amountControl.invalid && amountControl.touched">
+              Amount is required
+            </span>
+          </div>
+          
+          <div class="form-group" [class.text-danger]="currencyCodeControl.invalid && currencyCodeControl.touched">
+            <label for="currencyCode">Currency Code: </label>
+            <select name="currencyCode" id="currencyCode" [(ngModel)]="amount.currencyCode" required #currencyCodeControl="ngModel">
+              <option value="" disabled>Choose Currency Code</option>
+              <option *ngFor="let curr of currency" [ngValue]="curr">
+                  {{ curr }}
+              </option>
+              </select>
+              <span *ngIf="currencyCodeControl.invalid && currencyCodeControl.touched">
+              CurrencyCode is required
+            </span>
+          </div>
+
+
+          <div class="form-group"  [class.text-danger]="sourcAccControl.invalid && sourcAccControl.touched">
+            <label for="sourceAccountNumber">Source Acc-No: </label>
+            <input type="text" name="sourceAccountNumber" id="sourceAccountNumber" pattern="[0-9]{6}" maxlength="6" [(ngModel)]="amount.sourceAccountNumber" required #sourcAccControl="ngModel">
+            <span *ngIf="sourcAccControl.invalid && sourcAccControl.touched">
+              Source Account Number is required
+            </span>
+            <span *ngIf="sourcAccControl.touched && sourcAccControl.errors?.pattern">
+              Not a valid account number.Enter your 6 digit valid account number
+            </span>
+          </div>
+      
+          <div class="form-group" [class.text-danger]="destinationAccControl.invalid && destinationAccControl.touched">
+            <label for="destinationAccountNumber">Destination AccountNo: </label>
+            <input type="text" name="destinationAccountNumber" id="destinationAccountNumber"  pattern="[0-9]{6}" maxlength="6" [(ngModel)]="amount.destinationAccountNumber" required #destinationAccControl="ngModel">
+            
+            <span *ngIf="destinationAccControl.invalid && destinationAccControl.touched">
+              Destination Account Number is required
+            </span>
+            <span *ngIf="destinationAccControl.touched && destinationAccControl.errors?.pattern">
+              Not a valid account number.Enter 6 digit receiver Account number
+            </span>
+          </div>  
+
+          <div class="form-group"  [class.text-danger]="descControl.invalid && descControl.touched">
+            <label for="description">Payment Description: </label>
+            <textarea name="paymentDescription" id="paymentDescription" [(ngModel)]="amount.paymentDescription"  rows="8" required #descControl="ngModel"></textarea>
+          <span *ngIf="descControl.invalid && descControl.touched">
+              Description is required
+            </span>
+          </div>
+          
+          <div class="form-group"> <label>&nbsp;</label>
+            <button type="submit" [disabled]="!paymentForm.form.valid">Send Payment</button>
+          </div>
+        </form>
+      </div>
+      
+
+      
